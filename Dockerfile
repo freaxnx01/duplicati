@@ -1,3 +1,4 @@
+# docker run -d -p 8123:8200 --name duplicati registry.freaxnx01.ch/mydocker-build/duplicati:latest
 FROM mono:6.8.0.96
 
 RUN apt-get update && \
