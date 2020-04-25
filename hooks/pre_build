@@ -1,2 +1,2 @@
 #!/bin/bash
-echo JUHUU
+echo $(cat latest-version)
