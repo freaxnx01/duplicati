@@ -4,6 +4,7 @@ FROM mono:6.8.0.96
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
         curl \
+        unzip \
         libmono-sqlite4.0-cil \
         libmono-system-drawing4.0-cil \
         libmono-system-net-http-webrequest4.0-cil \
@@ -27,7 +28,12 @@ ARG CHANNEL=
 ARG VERSION=
 ENV DUPLICATI_CHANNEL=${CHANNEL}
 ENV DUPLICATI_VERSION=${VERSION}
-COPY duplicati /opt/duplicati
+
+ARG DUPLICATI_DOWNLOAD_URL=
+
+RUN curl -k -LO ${DUPLICATI_DOWNLOAD_URL}
+RUN unzip *.zip -d /opt/duplicati
+RUN rm *.zip
 
 EXPOSE 8200
 CMD ["/usr/bin/duplicati-server", "--webservice-port=8200", "--webservice-interface=any"]
