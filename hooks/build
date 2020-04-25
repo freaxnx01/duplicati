@@ -1,0 +1,2 @@
+#!/bin/bash
+docker build -t $IMAGE_NAME --build-arg DUPLICATI_DOWNLOAD_URL=$(cat latest-zip) .
