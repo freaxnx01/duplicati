@@ -31,7 +31,7 @@ ENV DUPLICATI_VERSION=${VERSION}
 
 ARG DUPLICATI_DOWNLOAD_URL=
 RUN curl -k -L -o duplicati.zip ${DUPLICATI_DOWNLOAD_URL}
-RUN unzip *.zip -d /opt/duplicati
+RUN unzip -d /opt/duplicati/ *.zip
 RUN rm *.zip
 
 EXPOSE 8200
